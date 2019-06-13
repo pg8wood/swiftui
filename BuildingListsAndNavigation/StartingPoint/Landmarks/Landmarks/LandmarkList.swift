@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct LankmarkList : View {
+struct LandmarkList : View {
     var body: some View {
         NavigationView {
             List(landmarkData) { landmark in
-                NavigationButton(destination: LandmarkDetail()) {
+                NavigationButton(destination: LandmarkDetail(landmark: landmark)) {
                     LandmarkRow(landmark: landmark)
                 }
             }
@@ -24,7 +24,7 @@ struct LankmarkList : View {
 #if DEBUG
 struct LankmarkList_Previews : PreviewProvider {
     static var previews: some View {
-        LankmarkList()
+        LandmarkList()
     }
 }
 #endif
