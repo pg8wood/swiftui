@@ -8,15 +8,13 @@ A view showing the details for a landmark.
 import SwiftUI
 
 struct LandmarkDetail: View {
-    var landmark: Landmark
-    
     var body: some View {
         VStack {
-            MapView(coordinate: landmark.locationCoordinate)
+            MapView()
                 .edgesIgnoringSafeArea(.top)
                 .frame(height: 300)
 
-            CircleImage(image: landmark.image(forSize: 250))
+            CircleImage()
                 .offset(x: 0, y: -130)
                 .padding(.bottom, -130)
 
@@ -35,14 +33,11 @@ struct LandmarkDetail: View {
 
             Spacer()
         }
-        .navigationBarTitle(Text(landmark.name), displayMode: .inline)
     }
 }
 
-#if DEBUG
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail(landmark: landmarkData[0])
+        LandmarkDetail()
     }
 }
-#endif

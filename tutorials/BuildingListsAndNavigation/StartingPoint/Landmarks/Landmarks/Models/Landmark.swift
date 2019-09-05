@@ -8,7 +8,7 @@ The model for an individual landmark.
 import SwiftUI
 import CoreLocation
 
-struct Landmark: Hashable, Codable, Identifiable {
+struct Landmark: Hashable, Codable {
     var id: Int
     var name: String
     fileprivate var imageName: String
@@ -23,14 +23,16 @@ struct Landmark: Hashable, Codable, Identifiable {
             longitude: coordinates.longitude)
     }
 
-    func image(forSize size: Int) -> Image {
-        ImageStore.shared.image(name: imageName, size: size)
-    }
-
     enum Category: String, CaseIterable, Codable, Hashable {
         case featured = "Featured"
         case lakes = "Lakes"
         case rivers = "Rivers"
+    }
+}
+
+extension Landmark {
+    var image: Image {
+        ImageStore.shared.image(name: imageName)
     }
 }
 
